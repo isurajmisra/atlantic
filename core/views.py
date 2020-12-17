@@ -16,18 +16,11 @@ from django.dispatch import receiver
 from .models import  *
 
 def home_view(request):
-
-    # img = Image.open(r"C:\Users\suraj\Documents\atlantic\atlantic\core\static\img\img1.jpg")
-    # im_desktop = img.resize((2000,500))
-    # im_tablet = img.resize((800, 500))
-    # im_mobile = img.resize((600, 500))
-    # im_desktop.save("core\static\img\im_desktop.jpg")
-    # im_tablet.save("core\static\img\im_tablet.jpg")
-    # im_mobile.save("core\static\img\im_mobile.jpg")
     banners = ModifiedImg.objects.all()
     logo_fav = LogoFav.objects.all().first()
+    categories = ServiceCategory.objects.all()
 
-    context = {'banners':banners, 'logo_fav':logo_fav}
+    context = {'banners':banners, 'logo_fav':logo_fav, 'categories':categories}
     # if user.is_authenticated:
     #     if user.user_type == 'student':
     #         return render(request, 'home.html')
