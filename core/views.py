@@ -21,18 +21,25 @@ def home_view(request):
     categories = ServiceCategory.objects.all()
 
     context = {'banners':banners, 'logo_fav':logo_fav, 'categories':categories}
-    # if user.is_authenticated:
-    #     if user.user_type == 'student':
-    #         return render(request, 'home.html')
-    #     elif user.user_type == 'teacher':
-    #         return redirect('my_jobs')
+
     return render(request, 'home.html', context=context)
 
 def gallery_view(request):
-    return render(request, 'gallery.html')
+    gallery = Gallery.objects.all()
+    logo_fav = LogoFav.objects.all().first()
+    categories = ServiceCategory.objects.all()
+    context = {'gallery':gallery, 'logo_fav':logo_fav, 'categories':categories}
+    return render(request, 'gallery.html', context=context)
 
-def admin_view(request):
-    return render(request, 'admin.html')
+# def admin_view(request):
+#     return render(request, 'admin.html')
+
+def sub_category_view(request, cat_id, sub_id):
+    logo_fav = LogoFav.objects.all().first()
+    categories = ServiceCategory.objects.all()
+    category = ServiceCategory.objects.filter(id=cat_id).first()
+    sub = ServiceSubCategory.objects.filter(id=sub_id).first()
+    return render(request, 'subCategory.html', {'category': category, 'subcategory': sub, 'logo_fav':logo_fav, 'categories':categories})
 
 # def register(request):
 #     if request.user.is_anonymous:

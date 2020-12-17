@@ -50,7 +50,7 @@
                     <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">{{cat.title}}</a>
                         <ul class="dropdown-menu">
 							{% for sub in cat.subcategory.all%}
-                            <li><a class="dropdown-item" href="#">{{sub.title}}</a></li>
+                            <li><a class="dropdown-item" href=category/{{cat.id}}/subcat/{{sub.id}}>{{sub.title}}</a></li>
 							{% endfor %}
 <!--                            <li><a class="dropdown-item" href="#">Submenu0</a></li>-->
 <!--                            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Submenu 1</a>-->
