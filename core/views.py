@@ -25,9 +25,9 @@ def home_view(request):
     # im_tablet.save("core\static\img\im_tablet.jpg")
     # im_mobile.save("core\static\img\im_mobile.jpg")
     banners = ModifiedImg.objects.all()
-    b = banners.last()
-    print(b.banner_desktop.name)
-    context = {'banners':banners}
+    logo_fav = LogoFav.objects.all().first()
+
+    context = {'banners':banners, 'logo_fav':logo_fav}
     # if user.is_authenticated:
     #     if user.user_type == 'student':
     #         return render(request, 'home.html')

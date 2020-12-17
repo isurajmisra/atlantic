@@ -2,17 +2,22 @@
 {% extends 'base.html' %}
 {%load static %}
 {% block head %}
+<link rel="shortcut icon" href="{{logo_fav.fav.url}}" />
 <style>
 
-            .wrapper {
-  max-width:200px;
-  width:100%;
-}
-.carousel-item-next, .carousel-item-prev, .carousel-item.active {
-    display: block !important;
-}
+    .wrapper {
+      max-width:200px;
+      width:100%;
+    }
+    .carousel-item-next, .carousel-item-prev, .carousel-item.active {
+        display: block !important;
+    }
 </style>
 <script>
+$(document).ready(function(){
+    $("div.carousel-item").first().addClass("active");
+    }
+    );
 </script>
 
 {% endblock %}
@@ -27,13 +32,13 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
           </ol>
 
-          <div class="carousel-inner">
+          <div id="banners" class="carousel-inner">
               {%for banner in banners%}
-              <div class="carousel-item active">
+              <div class="carousel-item">
                     <picture>
                       <source srcset="{{banner.banner_desktop.url}}" media="(min-width: 1400px)">
                       <source srcset="{{banner.banner_tablet.url}}" media="(min-width: 769px)">
-                       <source srcset="{{banner.banner_mobile.url]}" media="(min-width: 577px)">
+                       <source srcset="{{banner.banner_mobile.url}}" media="(min-width: 577px)">
                       <img srcset="{{banner.banner_mobile.url}}" alt="responsive image" class="d-block img-fluid">
                     </picture>
               </div>

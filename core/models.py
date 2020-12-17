@@ -36,10 +36,9 @@ class ServiceCategory(models.Model):
     
 class ModifiedImg(models.Model):
     banner = models.ForeignKey(Slideshow, null=True, blank=True, on_delete=models.CASCADE)
-    banner_desktop = ResizedImageField(size=[2000, 500] ,null=True, blank=True, upload_to="img/modifiedImg/desktop/")
-
-    banner_tablet = ResizedImageField(size=[800, 500] ,null=True, blank=True, upload_to="img/modifiedImg/tablet/")
-    banner_mobile = ResizedImageField(size=[600, 500] ,null=True, blank=True, upload_to="img/modifiedImg/mobile/")
+    banner_desktop = ResizedImageField(size=[2000, 500], null=True, blank=True, upload_to="img/modifiedImg/desktop/")
+    banner_tablet = ResizedImageField(size=[800, 500], null=True, blank=True, upload_to="img/modifiedImg/tablet/")
+    banner_mobile = ResizedImageField(size=[600, 500], null=True, blank=True, upload_to="img/modifiedImg/mobile/")
 
     # def save(self):
     #     # Opening the uploaded image
