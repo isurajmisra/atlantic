@@ -42,10 +42,16 @@ def sub_category_view(request, cat_id, sub_id):
     return render(request, 'subCategory.html', {'category': category, 'subcategory': sub, 'logo_fav':logo_fav, 'categories':categories})
 
 def contact_view(request):
-    return render(request, 'contact.html')
+    logo_fav = LogoFav.objects.all().first()
+    categories = ServiceCategory.objects.all()
+    context = {'logo_fav': logo_fav, 'categories': categories}
+    return render(request, 'contact.html', context=context)
 
 def about_view(request):
-    return render(request, 'about.html')
+    logo_fav = LogoFav.objects.all().first()
+    categories = ServiceCategory.objects.all()
+    context = {'logo_fav': logo_fav, 'categories': categories}
+    return render(request, 'about.html', context=context)
 
 # def register(request):
 #     if request.user.is_anonymous:
