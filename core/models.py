@@ -36,28 +36,34 @@ class ServiceCategory(models.Model):
     
 class ModifiedImg(models.Model):
     banner = models.ForeignKey(Slideshow, null=True, blank=True, on_delete=models.CASCADE)
-    banner_desktop = ResizedImageField(size=[2000, 500], null=True, blank=True, upload_to="img/modifiedImg/desktop/")
-    banner_tablet = ResizedImageField(size=[800, 500], null=True, blank=True, upload_to="img/modifiedImg/tablet/")
-    banner_mobile = ResizedImageField(size=[600, 500], null=True, blank=True, upload_to="img/modifiedImg/mobile/")
+    banner_desktop = models.ImageField(null=True, blank=True, upload_to="img/modifiedImg/desktop/")
+    banner_tablet = models.ImageField(null=True, blank=True, upload_to="img/modifiedImg/tablet/")
+    banner_mobile = models.ImageField(null=True, blank=True, upload_to="img/modifiedImg/mobile/")
 
-    # def save(self):
-    #     # Opening the uploaded image
-    #     im = Image.open(self.img)
-    #
-    #     output = BytesIO()
-    #
-    #     # Resize/modify the image
-    #     im = im.resize((100, 100))
-    #
-    #     # after modifications, save it to the output
-    #     im.save(output, format='JPEG', quality=100)
-    #     output.seek(0)
-    #
-    #     # change the imagefield value to be the newley modifed image value
-    #     self.img = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.img.name.split('.')[0], 'image/jpeg',
-    #                                     sys.getsizeof(output), None)
-    #
-    #     super(ModifiedImg, self).save()
+    def save(self, *args, **kwargs):
+
+        if not self.id and not self.banner_desktop and not self.banner_tablet and not self.banner_mobile:
+            return
+
+        super(ModifiedImg, self).save(*args, **kwargs)
+
+        desk_image = Image.open(self.banner_desktop)
+        desk_image = desk_image.resize((2000, 500))
+        desk_image.save(self.banner_desktop.path)
+        desk_image.close()
+
+        tab_image = Image.open(self.banner_tablet)
+        tab_image = tab_image.resize((800, 500))
+        tab_image.save(self.banner_tablet.path)
+        tab_image.close()
+
+        mob_image = Image.open(self.banner_mobile)
+        mob_image = mob_image.resize((600, 500))
+        mob_image.save(self.banner_mobile.path)
+        mob_image.close()
+
+
+
 VALID_IMAGE_MIMETYPES = [
     "image"
 ]
@@ -104,10 +110,6 @@ def validate_image(image):
     image.name = base
     return image
 
-# def get_file_path(instance, filename, text):
-#     ext = filename.split('.')[-1]
-#     filename = f"{text}" % (uuid.uuid4(), ext)
-#     return os.path.join(instance.directory_string_var, filename)
 
 @receiver(post_save, sender=Slideshow)
 def signal_deposit_save(sender, instance, created, **kwargs):
@@ -116,10 +118,7 @@ def signal_deposit_save(sender, instance, created, **kwargs):
         im_desktop = validate_image(img)
         im_tablet = validate_image(img)
         im_mobile = validate_image(img)
-        # # # im_desktop.save("core\static\img\im_desktop.jpg")
-        # # # im_tablet.save("core\static\img\im_tablet.jpg")
-        # # # im_mobile.save("core\static\img\im_mobile.jpg")
-        # im_desktop.filename = get_file_path(instance, img.filename, "_desktop")
+
         modified_imgs = ModifiedImg.objects.create(banner=instance)
         modified_imgs.banner_desktop = im_desktop
         modified_imgs.banner_tablet = im_tablet
