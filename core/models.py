@@ -14,18 +14,18 @@ from django_resized import ResizedImageField
 
 
 class Slideshow(models.Model):
-    img = models.ImageField(null=True, blank=True, upload_to="core/static/img/banner/")
+    img = models.ImageField(null=True, blank=True, upload_to="img/banner/")
     link = models.URLField(null=True, blank=True)
 
 class Gallery(models.Model):
-    img = models.ImageField(null=True, blank=True, upload_to="core/static/img/gallery/")
+    img = models.ImageField(null=True, blank=True, upload_to="img/gallery/")
 
 class LogoFav(models.Model):
-    logo = models.ImageField(null=True, blank=True, upload_to="core/static/img/logo/")
-    fav = models.ImageField(null=True, blank=True, upload_to="core/static/img/fav/")
+    logo = models.ImageField(null=True, blank=True, upload_to="img/logo/")
+    fav = models.ImageField(null=True, blank=True, upload_to="img/fav/")
 
 class ServiceSubCategory(models.Model):
-    img = models.ImageField(null=True, blank=True, upload_to="core/static/img/subcategory/")
+    img = models.ImageField(null=True, blank=True, upload_to="img/subcategory/")
     title = models.CharField(max_length=50,null=True, blank=True)
     description = models.CharField(max_length=500, null=True, blank=True)
 
@@ -36,9 +36,10 @@ class ServiceCategory(models.Model):
     
 class ModifiedImg(models.Model):
     banner = models.ForeignKey(Slideshow, null=True, blank=True, on_delete=models.CASCADE)
-    banner_desktop = ResizedImageField(size=[2000, 500] ,null=True, blank=True, upload_to="core/static/img/modifiedImg/desktop/")
-    banner_tablet = ResizedImageField(size=[800, 500] ,null=True, blank=True, upload_to="core/static/img/modifiedImg/tablet/")
-    banner_mobile = ResizedImageField(size=[600, 500] ,null=True, blank=True, upload_to="core/static/img/modifiedImg/mobile/")
+    banner_desktop = ResizedImageField(size=[2000, 500] ,null=True, blank=True, upload_to="img/modifiedImg/desktop/")
+
+    banner_tablet = ResizedImageField(size=[800, 500] ,null=True, blank=True, upload_to="img/modifiedImg/tablet/")
+    banner_mobile = ResizedImageField(size=[600, 500] ,null=True, blank=True, upload_to="img/modifiedImg/mobile/")
 
     # def save(self):
     #     # Opening the uploaded image

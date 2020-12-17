@@ -32,10 +32,10 @@
             <div class="carousel-item active">
 <!--              <img src="{%static 'img/img1.jpg'%}" class="d-block w-100" alt="...">-->
                 <picture>
-                      <source srcset="{{banner.banner_desktop.name}}" media="(min-width: 1400px)">
-                      <source srcset="{{banner.banner_tablet.name}}" media="(min-width: 769px)">
-                       <source srcset="{{banner.banner_mobile.name}}" media="(min-width: 577px)">
-                      <img srcset="{{banner.banner_mobile.name}}" alt="responsive image" class="d-block img-fluid">
+                      <source srcset="{{banner.banner_desktop.url}}" media="(min-width: 1400px)">
+                      <source srcset="{{banner.banner_tablet.url}}" media="(min-width: 769px)">
+                       <source srcset="{{banner.banner_mobile.url]}" media="(min-width: 577px)">
+                      <img srcset="{{banner.banner_mobile.url}}" alt="responsive image" class="d-block img-fluid">
                     </picture>
             </div>
               {%endfor%}
