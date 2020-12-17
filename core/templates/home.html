@@ -12,6 +12,9 @@
     .carousel-item-next, .carousel-item-prev, .carousel-item.active {
         display: block !important;
     }
+    .carousel-item .img-fluid {
+          width:100%;
+        }
 </style>
 <script>
 $(document).ready(function(){
@@ -24,22 +27,22 @@ $(document).ready(function(){
 
 
 {% block main %}
-<div class="home main-container">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
 
-          <div id="banners" class="carousel-inner">
+    <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+        </ol>
+
+          <div id="banners" class="carousel-inner" role="listbox">
               {%for banner in banners%}
               <div class="carousel-item">
                     <picture>
-                      <source srcset="{{banner.banner_desktop.url}}" media="(min-width: 1400px)">
-                      <source srcset="{{banner.banner_tablet.url}}" media="(min-width: 769px)">
-                       <source srcset="{{banner.banner_mobile.url}}" media="(min-width: 577px)">
-                      <img srcset="{{banner.banner_mobile.url}}" alt="responsive image" class="d-block img-fluid">
+                      <source srcset="https://dummyimage.com/2000x500/007aeb/4196e5" media="(min-width: 1400px)">
+                      <source srcset="https://dummyimage.com/1400x500/#007aeb/4196e5" media="(min-width: 769px)">
+                       <source srcset="https://dummyimage.com/800x500/007aeb/4196e5" media="(min-width: 577px)">
+                      <img srcset="https://dummyimage.com/600x500/007aeb/4196e5" alt="responsive image" class="d-block img-fluid">
                     </picture>
               </div>
               {%endfor%}
@@ -56,7 +59,7 @@ $(document).ready(function(){
             <span class="sr-only">Next</span>
           </a>
     </div>
-</div>
+
 
 
 {% endblock %}
