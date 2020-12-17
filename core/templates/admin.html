@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{%load static %}
+{% block head %}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/accountSettings.css'%}">
+<script src="{%static 'js/accountSettings.js'%}"></script>
+<script src="{%static 'js/admin.js'%}"></script>
+{% endblock %}
+{% block main %}
+
+<div class="container light-style flex-grow-1 container-p-y">
+
+    <h4 class="font-weight-bold py-3 mb-4" style="font-size: 2em;">
+      Admin Panel
+    </h4>
+
+    <div class="card overflow-hidden">
+      <div class="row no-gutters row-bordered row-border-light">
+        <div class="col-md-2 pt-0">
+          <div class="list-group list-group-flush account-settings-links">
+            <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home-page">Home Page</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#gallery">Gallery</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#services">Services</a>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="tab-content">
+            <div class="tab-pane fade active show" id="home-page">
+
+              <div class="col-lg-8">
+
+                <h1 class="my-4">Banner</h1>
+
+                <div class="repo-files-parent">
+                    <div class="repo-name-div"></div>
+                    <div class="add-topic-container">
+
+                          <button id="addBanner" class="btn btn-dark" onclick="addBanner()">Add Banner</button>
+
+                    </div>
+                    <div>
+                        <h4 class="bannerList">Banner List</h4>
+                    </div>
+
+                    <div class="repo-files">
+                        <ul id="bannerGroup" class="list-group">
+
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+          </div>
+            <div class="tab-pane fade" id="gallery">
+
+            </div>
+            <div class="tab-pane fade" id="services">
+
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+{% endblock %}

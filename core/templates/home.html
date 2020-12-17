@@ -27,39 +27,22 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
           </ol>
           <div class="carousel-inner">
+              {%if banner%}
+              {%for banner in banners%}
             <div class="carousel-item active">
 <!--              <img src="{%static 'img/img1.jpg'%}" class="d-block w-100" alt="...">-->
                 <picture>
-                      <source srcset="https://dummyimage.com/2000x500/007aeb/4196e5" media="(min-width: 1400px)">
-                      <source srcset="https://dummyimage.com/1400x500/#007aeb/4196e5" media="(min-width: 769px)">
-                       <source srcset="https://dummyimage.com/800x500/007aeb/4196e5" media="(min-width: 577px)">
-                      <img srcset="https://dummyimage.com/600x500/007aeb/4196e5" alt="responsive image" class="d-block img-fluid">
+                      <source srcset="{{banner.banner_desktop.name}}" media="(min-width: 1400px)">
+                      <source srcset="{{banner.banner_tablet.name}}" media="(min-width: 769px)">
+                       <source srcset="{{banner.banner_mobile.name}}" media="(min-width: 577px)">
+                      <img srcset="{{banner.banner_mobile.name}}" alt="responsive image" class="d-block img-fluid">
                     </picture>
             </div>
-              <div class="carousel-item ">
-<!--              <img src="{%static 'img/img1.jpg'%}" class="d-block w-100" alt="...">-->
-                <picture>
-                      <source srcset="https://dummyimage.com/2000x500/007aeb/4196e5" media="(min-width: 1400px)">
-                      <source srcset="https://dummyimage.com/1400x500/#007aeb/4196e5" media="(min-width: 769px)">
-                       <source srcset="https://dummyimage.com/800x500/007aeb/4196e5" media="(min-width: 577px)">
-                      <img srcset="https://dummyimage.com/600x500/007aeb/4196e5" alt="responsive image" class="d-block img-fluid">
-                    </picture>
+              {%endfor%}
+              {%endif%}
+
             </div>
-              <div class="carousel-item ">
-<!--              <img src="{%static 'img/img1.jpg'%}" class="d-block w-100" alt="...">-->
-                <picture>
-                      <source srcset="https://dummyimage.com/2000x500/007aeb/4196e5" media="(min-width: 1400px)">
-                      <source srcset="https://dummyimage.com/1400x500/#007aeb/4196e5" media="(min-width: 769px)">
-                       <source srcset="https://dummyimage.com/800x500/007aeb/4196e5" media="(min-width: 577px)">
-                      <img srcset="https://dummyimage.com/600x500/007aeb/4196e5" alt="responsive image" class="d-block img-fluid">
-                    </picture>
-            </div>
-<!--            <div class="carousel-item">-->
-<!--              <img src="{%static 'img/img1.jpg'%}" class="d-block w-100" alt="...">-->
-<!--            </div>-->
-<!--            <div class="carousel-item">-->
-<!--              <img src="{%static 'img/img1.jpg'%}" class="d-block w-100" alt="...">-->
-<!--            </div>-->
+
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

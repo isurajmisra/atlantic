@@ -8,23 +8,23 @@ from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 import sqlite3
-
+from PIL import Image
 from django.contrib.auth import login as user_login
 from django.contrib import messages
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
+from .models import  *
 
 def home_view(request):
-    user = request.user
-    if user.is_authenticated:
-        if user.user_type == 'student':
-            return render(request, 'home.html')
-        elif user.user_type == 'teacher':
-            return redirect('my_jobs')
-    return render(request, 'home.html')
+    banners = ModifiedImg.objects.all()
+    context = {'banners':banners}
+    return render(request, 'home.html', context=context)
 
 def gallery_view(request):
     return render(request, 'gallery.html')
+
+def admin_view(request):
+    return render(request, 'admin.html')
 
 # def register(request):
 #     if request.user.is_anonymous:
