@@ -41,6 +41,12 @@ def sub_category_view(request, cat_id, sub_id):
     sub = ServiceSubCategory.objects.filter(id=sub_id).first()
     return render(request, 'subCategory.html', {'category': category, 'subcategory': sub, 'logo_fav':logo_fav, 'categories':categories})
 
+def contact_view(request):
+    return render(request, 'contact.html')
+
+def about_view(request):
+    return render(request, 'about.html')
+
 # def register(request):
 #     if request.user.is_anonymous:
 #         return render(request, 'register.html')

@@ -26,12 +26,12 @@ class LogoFav(models.Model):
 
 class ServiceSubCategory(models.Model):
     img = models.ImageField(null=True, blank=True, upload_to="img/subcategory/")
-    title = models.CharField(max_length=50,null=True, blank=True)
-    description = models.CharField(max_length=500, null=True, blank=True)
+    title = models.CharField(max_length=100,null=True, blank=True)
+    description = models.CharField(max_length=5000, null=True, blank=True)
 
 class ServiceCategory(models.Model):
-    title = models.CharField(max_length=50,null=True, blank=True)
-    description = models.CharField(max_length=500, null=True, blank=True)
+    title = models.CharField(max_length=100,null=True, blank=True)
+    description = models.CharField(max_length=5000, null=True, blank=True)
     subcategory = models.ManyToManyField(ServiceSubCategory, null=True, blank=True)
     
 class ModifiedImg(models.Model):
