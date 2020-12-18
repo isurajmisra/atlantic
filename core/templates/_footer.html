@@ -184,15 +184,19 @@ a {
             <div class="footer-menu footer-menu--1">
               <h4 class="footer-widget-title">Service</h4>
               <ul>
+                {%if categories%}
+								{%for cat in categories%}
                 <li>
-                  <a href="#">How it works</a>
+                  <a href="{%url 'category_view' cat_id=cat.id%}">{{cat.title}}</a>
                 </li>
-                <li>
-                  <a href="#">Safety</a>
-                </li>
-                <li>
-                  <a href="#"> Prices</a>
-                </li>
+                {%endfor%}
+                {%endif%}
+<!--                <li>-->
+<!--                  <a href="#">Safety</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                  <a href="#"> Prices</a>-->
+<!--                </li>-->
 
               </ul>
             </div>
@@ -202,30 +206,30 @@ a {
         </div>
         <!-- end /.col-md-3 -->
 
-        <div class="col-md-3 col-sm-4">
-          <div class="footer-widget">
-            <div class="footer-menu">
-              <h4 class="footer-widget-title">Service</h4>
-              <ul>
-                <li>
-                  <a href="#">Service 1</a>
-                </li>
-                <li>
-                  <a href="#">Service 2</a>
-                </li>
-                <li>
-                  <a href="#">Service 3</a>
-                </li>
-                <li>
-                  <a href="#">Guide</a>
-                </li>
+<!--        <div class="col-md-3 col-sm-4">-->
+<!--          <div class="footer-widget">-->
+<!--            <div class="footer-menu">-->
+<!--              <h4 class="footer-widget-title">Service</h4>-->
+<!--              <ul>-->
+<!--                <li>-->
+<!--                  <a href="#">Service 1</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                  <a href="#">Service 2</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                  <a href="#">Service 3</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                  <a href="#">Guide</a>-->
+<!--                </li>-->
 
-              </ul>
-            </div>
+<!--              </ul>-->
+<!--            </div>-->
 
-          </div>
+<!--          </div>-->
 
-        </div>
+<!--        </div>-->
 
 
         <div class="col-md-3 col-sm-4">
@@ -234,24 +238,24 @@ a {
               <h4 class="footer-widget-title">Help Support</h4>
               <ul>
                 <li>
-                  <a href="#">Help center</a>
+                  <a href="{%url 'help_center_view'%}">Help center</a>
                 </li>
 
                   <li>
-                  <a href="#">Contact Us</a>
+                  <a href="{%url 'contact'%}">Contact Us</a>
                 </li>
                 <li>
-                  <a href="#">Terms &amp; Conditions</a>
+                  <a href="{%url 'term_conditions_view'%}">Terms &amp; Conditions</a>
                 </li>
                 <li>
-                  <a href="#">Support Policy</a>
+                  <a href="{%url 'support_policy_view'%}">Support Policy</a>
                 </li>
-                <li>
-                  <a href="#">Refund Policy</a>
-                </li>
-                <li>
-                  <a href="#">FAQs</a>
-                </li>
+<!--                <li>-->
+<!--                  <a href="#">Refund Policy</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                  <a href="#">FAQs</a>-->
+<!--                </li>-->
 
               </ul>
             </div>

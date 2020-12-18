@@ -33,6 +33,11 @@ def gallery_view(request):
 
 # def admin_view(request):
 #     return render(request, 'admin.html')
+def category_view(request, cat_id):
+    logo_fav = LogoFav.objects.all().first()
+    categories = ServiceCategory.objects.all()
+    category = ServiceCategory.objects.filter(id=cat_id).first()
+    return render(request, 'category.html', {'category': category, 'logo_fav':logo_fav, 'categories':categories})
 
 def sub_category_view(request, cat_id, sub_id):
     logo_fav = LogoFav.objects.all().first()
@@ -52,6 +57,24 @@ def about_view(request):
     categories = ServiceCategory.objects.all()
     context = {'logo_fav': logo_fav, 'categories': categories}
     return render(request, 'about.html', context=context)
+
+def help_center_view(request):
+    logo_fav = LogoFav.objects.all().first()
+    categories = ServiceCategory.objects.all()
+    context = {'logo_fav': logo_fav, 'categories': categories}
+    return render(request, 'helpCenter.html', context=context)
+
+def term_conditions_view(request):
+    logo_fav = LogoFav.objects.all().first()
+    categories = ServiceCategory.objects.all()
+    context = {'logo_fav': logo_fav, 'categories': categories}
+    return render(request, 'termCondition.html', context=context)
+
+def support_policy_view(request):
+    logo_fav = LogoFav.objects.all().first()
+    categories = ServiceCategory.objects.all()
+    context = {'logo_fav': logo_fav, 'categories': categories}
+    return render(request, 'supportPolicy.html', context=context)
 
 # def register(request):
 #     if request.user.is_anonymous:

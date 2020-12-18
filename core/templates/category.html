@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{%load static %}
+{% block head %}
+<style>
+
+#content {
+    width: 100%;
+    position: relative;
+}
+.about .content-header {
+    padding-bottom: 49px;
+}
+
+.content-header {
+    padding: 113px 0 44px;
+}
+.sub-page h1,h1{
+font-family: 'Oxygen', sans-serif;
+}
+.content-header h1 {
+    margin-bottom: 0;
+}
+.key-factors {
+    padding-bottom: 88px;
+}
+h1, .h1 {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+</style>
+
+{% endblock %}
+{% block main %}
+
+
+
+
+<div id="content" class="about none">
+    <div class="container">
+      <header class="content-header row ">
+        <div class="heading col-md-8 col-sm-6 col-xs-12">
+          <h1>{{category.title}} </h1>
+        </div>
+
+      </header>
+
+      <section class="row key-factors">
+        <article class="col-sm-12">
+<!--          <h3>Car Dent Repair and Painting Services</h3>-->
+          <p>{{category.description}}</p>
+        </article>
+
+      </section>
+    </div>
+  </div>
+
+{% endblock %}
